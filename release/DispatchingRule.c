@@ -1,9 +1,11 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
-#include"InitializeData.h"
-#include"TwoSwap.h"
-#include"HardPenalty.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#include "../include/HardPenalty.h"
+#include "../include/InitializeData.h"
+#include "../include/TwoSwap.h"
+
 #define NUMBER 1000
 
 /*‰È–Ú‚ð–ž‚½‚·•”‰®‚ª‚Ç‚Ì•”‰®‚©‘S‚Ä—ñ‹“*/

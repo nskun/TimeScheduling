@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include"HardPenalty.h"
-#include"Swap.h"
+#include "../include/HardPenalty.h"
+#include "../include/Swap.h"
+
 void RoomTimeslot2swap(int **event_timeslot, int **room_timeslot, int **student_timeslot, int *room, int *event, int *student, int **event_student, int **student_event, int *student_hp, int **roomfeature_event, int **room_event){
 	int i;
 	int a_time, b_time;

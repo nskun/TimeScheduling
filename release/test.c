@@ -1,18 +1,16 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<time.h>
-#include"InputData.h"
-#include"InitializeData.h"
-#include"DispatchingRule.h"
-#include"HardPenalty.h"
-#include"Swap.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#include "../include/DispatchingRule.h"
+#include "../include/HardPenalty.h"
+#include "../include/InitializeData.h"
+#include "../include/InputData.h"
+#include "../include/Swap.h"
+
 #define NUMBER 1000
 #define READ_DEBUG 0 /* ファイル読み込み確認用(デバッグ用) */
-#define DEBUG 1
-
-
-
-
+#define DEBUG 0
 
 int last_soft_penalty(int *student, int **student_timeslot){
 	int i;
@@ -315,7 +313,7 @@ void RoomtimeslotRandomKick(int **event_timeslot, int **room_timeslot, int **stu
 	}*/
 }
 void random_roop(int *event, int *room, int *feature, int *student, int **room_timeslot, int **event_timeslot, int **student_timeslot, int *student_hp, int **event_student, int **student_event, int *sp, int **eventfeature_room, int **roomfeature_event, int **room_event, int *roop, int **random_event, int **random_room, int **random_student, int **random_re, int *random_hp, int *random_sp){
-	int i, j;
+	int i;
 	int count;
 
 	for(i = 0; i < *roop; i++){
@@ -405,7 +403,7 @@ void RandomKick(int *event, int *room, int *feature, int *student, int **room_ti
 	//printf("改善が見られない場合何秒まわすか");fflush(stdout);scanf("%d", &time);
 
 	FILE *fp;
-	if ((fp = fopen("wwww.txt", "w")) == NULL) {
+	if ((fp = fopen("../tim/competition01.tim", "w")) == NULL) {
 		printf("file open error!!\n");
 		exit(EXIT_FAILURE);	/* (3)エラーの場合は通常、異常終了する */
 	}
@@ -454,6 +452,7 @@ void RandomKick(int *event, int *room, int *feature, int *student, int **room_ti
 }
 /* main関数 */
 int main(void){
+	printf("main関数内チェック:\n");
 	int event, room, feature, student;
 	int max_attendance = 0;
 	int **Se; /* 生徒がどの科目を受講しているか */
