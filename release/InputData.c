@@ -4,29 +4,36 @@ void InputData(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, int *roo
 
 	int i, j, count = 0;
 
-
-	FILE *fp; /* ファイルポインタの宣言 */
+	// ファイルポインタの宣言
+	FILE *fp;
 
 	if ((fp = fopen("competition20.tim", "r")) == NULL) {
 		printf("file open error!!\n");
 		exit(-1);	/* エラーの場合は通常、異常終了する */
 	}
 
-	fscanf(fp, "%d %d %d %d", event, room, feature, student);/* ファイル1行目からそれぞれの数を読む */
+	/* ファイル1行目からそれぞれの数を読む */
+	fscanf(fp, "%d %d %d %d", event, room, feature, student);
 
-	for(i = 0; i < *room; i++){ /* 部屋のサイズを読む */
+	// 部屋のサイズを読む
+	for(i = 0; i < *room; i++){
 		fscanf(fp, "%d", &roomsize[i]);
 	}
+
+	// どの授業に生徒が出席するか
 	for(i = 0; i < *student; i++){ /* event_studentの0-1マトリクスを読む */
 		for(j = 0; j < *event; j++){
 			fscanf(fp, "%d", &Se[i][j]);
 		}
 	}
+
+	// どの部屋にどの特徴があるか
 	for(i = 0; i < *room; i++){ /* feature_roomの0-1マトリクスを読む */
 		for(j = 0; j < *feature; j++){
 			fscanf(fp, "%d", &Rf[i][j]);
 		}
 	}
+	// どの授業にどの特徴がいるか
 	for(i = 0; i < *event; i++){ /* feature_eventの0-1マトリクスを読む */
 		for(j = 0; j < *feature; j++){
 			fscanf(fp, "%d", &Ef[i][j]);
