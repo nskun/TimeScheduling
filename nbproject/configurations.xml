@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="SourceFiles" displayName="ソース・ファイル" projectFiles="true">
+      <itemPath>DispatchingRule.c</itemPath>
+      <itemPath>HardPenalty.c</itemPath>
+      <itemPath>InitializeData.c</itemPath>
+      <itemPath>InputData.c</itemPath>
+      <itemPath>Kswap.c</itemPath>
+      <itemPath>Swap.c</itemPath>
+      <itemPath>TwoSwap.c</itemPath>
+      <itemPath>main.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles" displayName="ヘッダー・ファイル" projectFiles="true">
+      <itemPath>DispatchingRule.h</itemPath>
+      <itemPath>HardPenalty.h</itemPath>
+      <itemPath>InitializeData.h</itemPath>
+      <itemPath>InputData.h</itemPath>
+      <itemPath>Kswap.h</itemPath>
+      <itemPath>Swap.h</itemPath>
+      <itemPath>TwoSwap.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles" displayName="リソース・ファイル" projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="テスト・ファイル"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="重要なファイル"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+      </compileType>
+      <item path="DispatchingRule.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DispatchingRule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HardPenalty.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HardPenalty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="InitializeData.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="InitializeData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="InputData.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="InputData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Kswap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Kswap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Swap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Swap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TwoSwap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="TwoSwap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="DispatchingRule.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="DispatchingRule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HardPenalty.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="HardPenalty.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="InitializeData.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="InitializeData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="InputData.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="InputData.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Kswap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Kswap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Swap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="Swap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TwoSwap.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="TwoSwap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
