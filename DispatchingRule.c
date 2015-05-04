@@ -2,22 +2,22 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "../include/HardPenalty.h"
-#include "../include/InitializeData.h"
-#include "../include/TwoSwap.h"
+#include "HardPenalty.h"
+#include "InitializeData.h"
+#include "TwoSwap.h"
 
 #define NUMBER 1000
 
-/*‰È–Ú‚ğ–‚½‚·•”‰®‚ª‚Ç‚Ì•”‰®‚©‘S‚Ä—ñ‹“*/
+/*ç§‘ç›®ã‚’æº€ãŸã™éƒ¨å±‹ãŒã©ã®éƒ¨å±‹ã‹å…¨ã¦åˆ—æŒ™*/
 void ef_all_check(int *feature, int *room, int *event, int *Es, int **Ef, int **Rf, int *Fr, int **eventfeature_room, int **roomfeature_event, int *roomsize, int **order_fr, int *delay_er){
 	int i, j, k;
 	int count1 = 0, count2 = 0;
 
-	int *sort_fr;/* feature‚Ì­‚È‚¢‡‚Éroom‚ğ•À‚×‚é */
+	int *sort_fr;/* featureã®å°‘ãªã„é †ã«roomã‚’ä¸¦ã¹ã‚‹ */
 	sort_fr = (int *)malloc(sizeof(int) * NUMBER);
 	minus1(sort_fr);
 
-	/* feature‚Ì­‚È‚¢‡‚Éroom‚ğ•À‚×‚é */
+	/* featureã®å°‘ãªã„é †ã«roomã‚’ä¸¦ã¹ã‚‹ */
 	for(i = 0; i <= *feature; i++){
 		for(j = 0; j < *room; j++){
 			if(Fr[j] == i){
@@ -26,7 +26,7 @@ void ef_all_check(int *feature, int *room, int *event, int *Es, int **Ef, int **
 			}
 		}
 	}
-	/* ‰È–Ú‚ğ–‚½‚µ‚Ä‚¢‚é•”‰®‚ğ‘S‚Äeventfeature_room“à‚ÉŠi”[ eventfeature_room[event_number][i] */
+	/* ç§‘ç›®ã‚’æº€ãŸã—ã¦ã„ã‚‹éƒ¨å±‹ã‚’å…¨ã¦eventfeature_roomå†…ã«æ ¼ç´ eventfeature_room[event_number][i] */
 	for(i = 0; i < *event; i++){
 		count2 = 0;
 		for(j = 0; j < *room; j++){
@@ -43,7 +43,7 @@ void ef_all_check(int *feature, int *room, int *event, int *Es, int **Ef, int **
 			/*printf("event i : %d room j : %d count1 : %d count2 : %d\n", i, j , count1, count2);*/
 		}
 	}
-	/* ‰È–Ú‚É‚æ‚éğŒ‚ğ‘S‚Ä–‚½‚µ‚Ä‚¢‚é•”‰®‚ÍŠe‰È–Ú‰½‹³º‚ ‚é‚©delay_room“à‚ÉŠi”[ delay_room[event_number] */
+	/* ç§‘ç›®ã«ã‚ˆã‚‹æ¡ä»¶ã‚’å…¨ã¦æº€ãŸã—ã¦ã„ã‚‹éƒ¨å±‹ã¯å„ç§‘ç›®ä½•æ•™å®¤ã‚ã‚‹ã‹delay_roomå†…ã«æ ¼ç´ delay_room[event_number] */
 	for(i = 0; i < *event; i++){
 		count1 = 0;
 		for(j = 0; j <= *room; j++){
@@ -66,7 +66,6 @@ void ef_all_check(int *feature, int *room, int *event, int *Es, int **Ef, int **
 			}
 		}
 	}
-
 
 #if 0
 	for(i = 0; i <= *feature; i++){
@@ -123,9 +122,9 @@ void rf_all_check(int *event, int *room, int *feature, int **eventfeature_room, 
 			}
 		}
 	}
-	/*–â‘è‚ª¬‚è—§‚Á‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN*/
+	/*å•é¡ŒãŒæˆã‚Šç«‹ã£ã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯*/
 	if(delay_re[0][0] != -1){
-		printf("rf_all_check error\n“Á’¥‚ª–‚½‚¹‚È‚¢‰È–Ú‚ª‚ ‚è‚Ü‚·");
+		printf("rf_all_check error\nç‰¹å¾´ãŒæº€ãŸã›ãªã„ç§‘ç›®ãŒã‚ã‚Šã¾ã™");
 		exit(-1);
 	}
 	for(i = 0; i <= *room; i++){
@@ -143,7 +142,7 @@ void rf_all_check(int *event, int *room, int *feature, int **eventfeature_room, 
 		printf("delay_r[%d] : %d\n", i, delay_r[i]);
 	}
 
-	for(i = 0; i <= *room; i++){ /* §–ñğŒ‚ğ‚Â‰È–Ú‚ğ–‚½‚·•”‰®‚ª­‚È‚¢‡”Ô‚É */
+	for(i = 0; i <= *room; i++){ /* åˆ¶ç´„æ¡ä»¶ã‚’æŒã¤ç§‘ç›®ã‚’æº€ãŸã™éƒ¨å±‹ãŒå°‘ãªã„é †ç•ªã« */
 		count = 0;
 		for(j = 0; j < delay_r[i]; j++){
 			for(k = 0; k <= i ; k++){
@@ -155,7 +154,7 @@ void rf_all_check(int *event, int *room, int *feature, int **eventfeature_room, 
 				}
 			}
 			if(day_time == 0){
-				printf("rf_all_check error!\nall_plus“à‚ÅƒGƒ‰[‚ª”­¶‚µ‚Ä‚¢‚Ü‚·\n");
+				printf("rf_all_check error!\nall_pluså†…ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¦ã„ã¾ã™\n");
 				exit(-1);
 			}
 		}
@@ -181,15 +180,15 @@ void rf_all_check(int *event, int *room, int *feature, int **eventfeature_room, 
 #endif
 
 }
-/* ƒfƒBƒXƒpƒbƒ`ƒ“ƒOƒ‹[ƒ‹‚ğ—p‚¢‚Ä‰Šú‰ğ‚ğì¬ */
+/* ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒãƒ³ã‚°ãƒ«ãƒ¼ãƒ«ã‚’ç”¨ã„ã¦åˆæœŸè§£ã‚’ä½œæˆ */
 void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, int *roomsize, int *event, int *room, int *feature, int *student, int **room_timeslot, int **order_fr, int **order_fe, int **order_se, int **event_timeslot, int **eventfeature_room, int **roomfeature_event, int *delay_er, int **delay_re, int *delay_r, int **student_timeslot, int *max_attendance, int **event_student, int **student_event, int *student_hp, int **room_event, int *seed){
 	int i, j, k;
 	int time;
-	int *oe_count; /* nŒÂ‚Ì“Á’¥‚ğ‚Â‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚© */
-	int *or_count; /* nŒÂ‚Ì“Á’¥‚ğ‚Â‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚© */
-	int *se_count; /* nl‚ªóu‚·‚é‰È–Ú‚Í‰½‰È–Ú‚ ‚é‚©*/
-	int *e_count; /* event‚ª‚Ç‚Ì“Á’¥‚ğ–‚½‚³‚È‚¢‚Æ‚¢‚¯‚È‚¢‚© */
-	int *over_room; /* room_timeslot‚ª44’´‚¦‚Ä‚µ‚Ü‚Á‚½ê‡1 ‚»‚êˆÈŠO‚Í0 */
+	int *oe_count; /* nå€‹ã®ç‰¹å¾´ã‚’æŒã¤ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã‹ */
+	int *or_count; /* nå€‹ã®ç‰¹å¾´ã‚’æŒã¤ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã‹ */
+	int *se_count; /* näººãŒå—è¬›ã™ã‚‹ç§‘ç›®ã¯ä½•ç§‘ç›®ã‚ã‚‹ã‹*/
+	int *e_count; /* eventãŒã©ã®ç‰¹å¾´ã‚’æº€ãŸã•ãªã„ã¨ã„ã‘ãªã„ã‹ */
+	int *over_room; /* room_timeslotãŒ44è¶…ãˆã¦ã—ã¾ã£ãŸå ´åˆ1 ãã‚Œä»¥å¤–ã¯0 */
 	clock_t start, end;
 
 
@@ -209,7 +208,7 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 
 
 
-	for(i = 0; i <= *feature; i++){ /* •”‰®‚Ì“Á’¥‚Ì”‚ª“¯‚¶‚à‚Ì“¯m‚ğ•À‚×‚é */
+	for(i = 0; i <= *feature; i++){ /* éƒ¨å±‹ã®ç‰¹å¾´ã®æ•°ãŒåŒã˜ã‚‚ã®åŒå£«ã‚’ä¸¦ã¹ã‚‹ */
 		for(j = 0; j < *room; j++){
 			if(Fr[j] == i){
 				order_fr[i][count] = j;
@@ -218,7 +217,7 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 		}count = 0;
 	}
 
-	for(i = 0; i <= *feature; i++){ /* ‰È–Ú‚Ì“Á’¥‚Ì”‚ª“¯‚¶‚à‚Ì“¯m‚ğ•À‚×‚é */
+	for(i = 0; i <= *feature; i++){ /* ç§‘ç›®ã®ç‰¹å¾´ã®æ•°ãŒåŒã˜ã‚‚ã®åŒå£«ã‚’ä¸¦ã¹ã‚‹ */
 		for(j = 0; j < *event; j++){
 			if(Fe[j] == i){
 				order_fe[i][count] = j;
@@ -226,7 +225,7 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 			}
 		}count = 0;
 	}
-	/* nŒÂ‚Ì“Á’¥‚Ì‚ ‚é‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚Ì‚©(oe_count[“Á’¥‚Ì”] == ‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚©)‚É“ü—Í */
+	/* nå€‹ã®ç‰¹å¾´ã®ã‚ã‚‹ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã®ã‹(oe_count[ç‰¹å¾´ã®æ•°] == ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã‹)ã«å…¥åŠ› */
 	for(i = 0; i <= *feature; i++){
 		for(j = 0; j < *event; j++){
 			if(order_fe[i][j] == -1){
@@ -236,7 +235,7 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 		}
 	}
 
-	/* nŒÂ‚Ì“Á’¥‚Ì‚ ‚é•”‰®‚ª‚¢‚­‚Â‚ ‚é‚Ì‚©(or_count[“Á’¥‚Ì”] == •”‰®‚ª‚¢‚­‚Â‚ ‚é‚©)‚É“ü—Í */
+	/* nå€‹ã®ç‰¹å¾´ã®ã‚ã‚‹éƒ¨å±‹ãŒã„ãã¤ã‚ã‚‹ã®ã‹(or_count[ç‰¹å¾´ã®æ•°] == éƒ¨å±‹ãŒã„ãã¤ã‚ã‚‹ã‹)ã«å…¥åŠ› */
 	for(i = 0; i <= *feature; i++){
 		for(j = 0; j < *room; j++){
 			if(order_fr[i][j] == -1){
@@ -257,7 +256,7 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 	}
 
 
-	for(i = 0; i < *event; i++){ /* event‚É‚Ç‚Ìstudent‚ªoÈ‚·‚é‚© */
+	for(i = 0; i < *event; i++){ /* eventã«ã©ã®studentãŒå‡ºå¸­ã™ã‚‹ã‹ */
 		count = 0;
 		for(j = 0; j < *student; j++){
 			if(Se[j][i] == 1){
@@ -267,7 +266,7 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 		}
 	}
 
-	for(i = 0; i < *student; i++){ /* student‚Í‚Ç‚Ìevent‚ÉoÈ‚·‚é‚© */
+	for(i = 0; i < *student; i++){ /* studentã¯ã©ã®eventã«å‡ºå¸­ã™ã‚‹ã‹ */
 		count = 0;
 		for(j = 0; j < *event; j++){
 			if(Se[i][j] == 1){
@@ -281,7 +280,7 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 
 #if 0
 	for(i = 0; i <= *max_attendance; i++){
-		printf("%dl :\n", i);
+		printf("%däºº :\n", i);
 		for(j = 0; j < *event ; j++){
 			if(Es[j] == i){
 				printf("Es[%d]\n", j);
@@ -295,17 +294,17 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 	for(i = 0; i <= *max_attendance; i++){
 		printf("se_count[%d] : %d\n", i, se_count[i]);
 	}
-	for(i = 0; i <= *feature; i++){ /* ‰È–Ú‚Ì“Á’¥‚Ì‘½‚¢‡”Ô‚É•À‚ñ‚Å‚¢‚é‚©‚ğo—Í */
-		printf("order_fr %d :\n", i); /* i‚Í“Á’¥‚Ì” */
+	for(i = 0; i <= *feature; i++){ /* ç§‘ç›®ã®ç‰¹å¾´ã®å¤šã„é †ç•ªã«ä¸¦ã‚“ã§ã„ã‚‹ã‹ã‚’å‡ºåŠ› */
+		printf("order_fr %d :\n", i); /* iã¯ç‰¹å¾´ã®æ•° */
 		for(j = 0; j < *room; j++){
-			printf("%d ", order_fr[i][j]); /* order_fr[“Á’¥‚Ì”][”z—ñ‚Ì—v‘f”] */
+			printf("%d ", order_fr[i][j]); /* order_fr[ç‰¹å¾´ã®æ•°][é…åˆ—ã®è¦ç´ æ•°] */
 		}puts("");
 	}puts("");
 
-	for(i = 0; i <= *feature; i++){ /* •”‰®‚Ì“Á’¥‚Ì‘½‚¢‡”Ô‚É•À‚ñ‚Å‚¢‚é‚©‚ğo—Í */
+	for(i = 0; i <= *feature; i++){ /* éƒ¨å±‹ã®ç‰¹å¾´ã®å¤šã„é †ç•ªã«ä¸¦ã‚“ã§ã„ã‚‹ã‹ã‚’å‡ºåŠ› */
 		printf("order_fe %d :\n", i);
 		for(j = 0; j < *event; j++){
-			printf("%d ", order_fe[i][j]); /* order_fe[“Á’¥‚Ì”][‰È–Ú”Ô†] */
+			printf("%d ", order_fe[i][j]); /* order_fe[ç‰¹å¾´ã®æ•°][ç§‘ç›®ç•ªå·] */
 		}puts("");
 	}
 
@@ -318,7 +317,7 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 			printf("order_se[%d][%d] = %d\n",i, j, order_se[i][j]);
 		}
 	}
-	for(i = 0; i < *event; i++){ /* event‚É‚Ç‚Ìstudent‚ªoÈ‚·‚é‚© */
+	for(i = 0; i < *event; i++){ /* eventã«ã©ã®studentãŒå‡ºå¸­ã™ã‚‹ã‹ */
 		printf("event_student[%d] : ", i);
 		for(j = 0; event_student[i][j] != -1; j++){
 			printf("%d ", event_student[i][j]);
@@ -326,17 +325,17 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 	}
 
 
-	/* nŒÂ‚Ì“Á’¥‚ğ‚Â‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚Ì‚©(oe_count[“Á’¥‚Ì”] == ‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚©)‚ğo—Í */
+	/* nå€‹ã®ç‰¹å¾´ã‚’æŒã¤ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã®ã‹(oe_count[ç‰¹å¾´ã®æ•°] == ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã‹)ã‚’å‡ºåŠ› */
 	printf(" \n");
 	for(i = 0; i <= *feature; i++){
 		printf("oe_ count[%d] : %d\n", i, oe_count[i]);
 	}
-	/* nŒÂ‚Ì“Á’¥‚ğ‚Â‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚Ì‚©(or_count[“Á’¥‚Ì”] == ‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚©)‚ğo—Í */
+	/* nå€‹ã®ç‰¹å¾´ã‚’æŒã¤ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã®ã‹(or_count[ç‰¹å¾´ã®æ•°] == ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã‹)ã‚’å‡ºåŠ› */
 	printf(" \n");
 	for(i = 0; i <= *feature; i++){
 		printf("or_ count[%d] : %d\n", i, or_count[i]);
 	}
-	for(i = 0; i < *student; i++){ /* student‚Í‚Ç‚Ìevent‚ÉoÈ‚·‚é‚©‚ğo—Í */
+	for(i = 0; i < *student; i++){ /* studentã¯ã©ã®eventã«å‡ºå¸­ã™ã‚‹ã‹ã‚’å‡ºåŠ› */
 		printf("student[%d] : ", i);
 		for(j = 0; student_event[i][j] != -1; j++){
 			printf("%d ", student_event[i][j]);
@@ -347,9 +346,9 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 #endif
 
 
-	/* eventfeature_room‚Ædelay_er‚ğ‚¿‹A‚é */
+	/* eventfeature_roomã¨delay_erã‚’æŒã¡å¸°ã‚‹ */
 	ef_all_check(feature, room, event, Es, Ef, Rf, Fr, eventfeature_room, roomfeature_event, roomsize, order_fr, delay_er);
-	/* room_timeslot‚Æevent_timeslot‚É’l‚ğ“ü‚ê‚é •›Y•¨‚Åover_room‚É’l‚ª“ü‚é */
+	/* room_timeslotã¨event_timeslotã«å€¤ã‚’å…¥ã‚Œã‚‹ å‰¯ç”£ç‰©ã§over_roomã«å€¤ãŒå…¥ã‚‹ */
 	rf_all_check(event, room, feature, eventfeature_room, delay_er, delay_re, delay_r, room_timeslot, event_timeslot, over_room, room_event, seed);
 	for(i = 0; i < *room; i++){
 		printf("room_number %d\n", i);
@@ -361,7 +360,7 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 		}
 		puts("");
 	}
-	/* event_student‚É‰È–Ú‚ª‚¢‚­‚Â“ü‚Á‚Ä‚¢‚é‚© */
+	/* event_studentã«ç§‘ç›®ãŒã„ãã¤å…¥ã£ã¦ã„ã‚‹ã‹ */
 	for(i = 0; i < *event; i++){
 		for(j = 0; event_student[i][j] != -1 ; j++){
 			student_timeslot[event_student[i][j]][event_timeslot[i][1]] += 1;
@@ -388,11 +387,11 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 		}
 	}
 	if(*student_hp == 0){
-		printf("ƒn[ƒh§–ñ‚ª‚È‚­‚È‚è‚Ü‚µ‚½D\n");
+		printf("ãƒãƒ¼ãƒ‰åˆ¶ç´„ãŒãªããªã‚Šã¾ã—ãŸï¼\n");
 	}else{
 		printf("2opt-student_hp : %d\n", *student_hp);
 	}
-	printf("2-opt‚Ìˆ—ŠÔ : %f",(double)(end - start) / CLOCKS_PER_SEC);
+	printf("2-optã®å‡¦ç†æ™‚é–“ : %f",(double)(end - start) / CLOCKS_PER_SEC);
 
 
 #if 0
@@ -419,33 +418,33 @@ void DispatchingRule(int **Se, int *Es, int **Rf, int *Fr, int **Ef, int *Fe, in
 	}
 
 
-	for(i = 0; i <= *feature; i++){ /* ‰È–Ú‚Ì“Á’¥‚Ì‘½‚¢‡”Ô‚É•À‚ñ‚Å‚¢‚é‚©‚ğo—Í */
-		printf("order_fr %d :\n", i); /* i‚Í“Á’¥‚Ì” */
+	for(i = 0; i <= *feature; i++){ /* ç§‘ç›®ã®ç‰¹å¾´ã®å¤šã„é †ç•ªã«ä¸¦ã‚“ã§ã„ã‚‹ã‹ã‚’å‡ºåŠ› */
+		printf("order_fr %d :\n", i); /* iã¯ç‰¹å¾´ã®æ•° */
 		for(j = 0; j < *room; j++){
-			printf("%d ", order_fr[i][j]); /* order_fr[“Á’¥‚Ì”][”z—ñ‚Ì—v‘f”] */
+			printf("%d ", order_fr[i][j]); /* order_fr[ç‰¹å¾´ã®æ•°][é…åˆ—ã®è¦ç´ æ•°] */
 		}puts("");
 	}puts("");
 
-	for(i = 0; i <= *feature; i++){ /* •”‰®‚Ì“Á’¥‚Ì‘½‚¢‡”Ô‚É•À‚ñ‚Å‚¢‚é‚©‚ğo—Í */
+	for(i = 0; i <= *feature; i++){ /* éƒ¨å±‹ã®ç‰¹å¾´ã®å¤šã„é †ç•ªã«ä¸¦ã‚“ã§ã„ã‚‹ã‹ã‚’å‡ºåŠ› */
 		printf("order_fe %d :\n", i);
 		for(j = 0; j < *event; j++){
-			printf("%d ", order_fe[i][j]); /* order_fe[“Á’¥‚Ì”][‰È–Ú”Ô†] */
+			printf("%d ", order_fe[i][j]); /* order_fe[ç‰¹å¾´ã®æ•°][ç§‘ç›®ç•ªå·] */
 		}puts("");
 	}
 
 
-	/* nŒÂ‚Ì“Á’¥‚ğ‚Â‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚Ì‚©(oe_count[“Á’¥‚Ì”] == ‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚©)‚ğo—Í */
+	/* nå€‹ã®ç‰¹å¾´ã‚’æŒã¤ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã®ã‹(oe_count[ç‰¹å¾´ã®æ•°] == ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã‹)ã‚’å‡ºåŠ› */
 	printf(" \n");
 	for(i = 0; i <= *feature; i++){
 		printf("oe_ count[%d] : %d\n", i, oe_count[i]);
 	}
-	/* nŒÂ‚Ì“Á’¥‚ğ‚Â‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚Ì‚©(or_count[“Á’¥‚Ì”] == ‰È–Ú‚ª‚¢‚­‚Â‚ ‚é‚©)‚ğo—Í */
+	/* nå€‹ã®ç‰¹å¾´ã‚’æŒã¤ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã®ã‹(or_count[ç‰¹å¾´ã®æ•°] == ç§‘ç›®ãŒã„ãã¤ã‚ã‚‹ã‹)ã‚’å‡ºåŠ› */
 	printf(" \n");
 	for(i = 0; i <= *feature; i++){
 		printf("or_ count[%d] : %d\n", i, or_count[i]);
 	}
 
-	/* ‰È–Ú‚ª‚Ç‚±‚É‘Î‰‚µ‚Ä‚¢‚é‚©‚ğo—Í */
+	/* ç§‘ç›®ãŒã©ã“ã«å¯¾å¿œã—ã¦ã„ã‚‹ã‹ã‚’å‡ºåŠ› */
 	for(i = 0; i < *event; i++){
 		printf("event_number %d\n room : %d timeslot : %d", i, event_timeslot[i][0], event_timeslot[i][1]);
 		puts("");

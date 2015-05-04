@@ -23,7 +23,7 @@ void student_hard_penalty_2opt_difference(int **student_timeslot, int **event_st
 	}
 }
 int student_hard_penalty_2opt(int **student_timeslot, int **event_student, int *a_time, int *b_time, int *a_event, int *b_event){
-	/* 2opt‚Ìƒn[ƒhƒyƒiƒ‹ƒeƒB‚ª‚¢‚­‚Â‚©”‚¦‚éŠÖ” */
+	/* 2optã®ãƒãƒ¼ãƒ‰ãƒšãƒŠãƒ«ãƒ†ã‚£ãŒã„ãã¤ã‹æ•°ãˆã‚‹é–¢æ•° */
 	int i;
 	int count_before = 0, count_after = 0;
 	for(i = 0; event_student[*a_event][i] != -1; i++){

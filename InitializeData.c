@@ -1,6 +1,6 @@
 #include<stdio.h>
 #define NUMBER 1000
-/* ”z—ñ‚ğ-1‚É‰Šú‰»‚·‚é */
+/* é…åˆ—ã‚’-1ã«åˆæœŸåŒ–ã™ã‚‹ */
 void minus2(int **a){
 	int i, j;
 	for(i = 0; i < NUMBER; i++){
@@ -9,14 +9,14 @@ void minus2(int **a){
 		}
 	}
 }
-/* ”z—ñ‚ğ-1‚É‰Šú‰»‚·‚é */
+/* é…åˆ—ã‚’-1ã«åˆæœŸåŒ–ã™ã‚‹ */
 void minus1(int *a){
 	int i;
 	for(i = 0; i < NUMBER; i++){
 		a[i] = -1;
 	}
 }
-/* ”z—ñ‚ğ0‚É‰Šú‰»‚·‚é */
+/* é…åˆ—ã‚’0ã«åˆæœŸåŒ–ã™ã‚‹ */
 void zero2(int **a){
 	int i, j;
 	for(i = 0; i < NUMBER; i++){
@@ -26,7 +26,7 @@ void zero2(int **a){
 	}
 }
 
-/* ”z—ñ‚ğ0‚É‰Šú‰»‚·‚é */
+/* é…åˆ—ã‚’0ã«åˆæœŸåŒ–ã™ã‚‹ */
 void zero1(int *a){
 	int i;
 	for(i = 0; i < NUMBER; i++){

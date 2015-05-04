@@ -1,5 +1,5 @@
-#include "../include/HardPenalty.h"
-#include "../include/Swap.h"
+#include "HardPenalty.h"
+#include "Swap.h"
 
 void InRoomKswapRoop(int *room, int *time, int **event_timeslot, int **room_timeslot, int **student_timeslot, int **event_student, int **room_event, int *student_hp){
 	int i;
